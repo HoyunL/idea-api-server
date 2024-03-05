@@ -1,7 +1,7 @@
-package repository;
+package com.ideate.idea_api_server.repository;
 
-import dto.UserDto;
-import entity.User;
+import com.ideate.idea_api_server.dto.UserDto;
+import com.ideate.idea_api_server.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +25,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
 
     void save(UserDto userDto);
-
 
     List<User> findAll();
 

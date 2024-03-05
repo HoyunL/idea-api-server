@@ -1,4 +1,4 @@
-package util;
+package com.ideate.idea_api_server.util;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,4 +1,4 @@
-package entity;
+package com.ideate.idea_api_server.entity;
 
 /**
  * <pre>

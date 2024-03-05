@@ -1,12 +1,12 @@
-package service;
+package com.ideate.idea_api_server.service;
 
-import dto.UserDto;
-import entity.User;
+import com.ideate.idea_api_server.entity.User;
+import com.ideate.idea_api_server.repository.UserRepository;
+import com.ideate.idea_api_server.dto.UserDto;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.ideate.idea_api_server.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,13 +1,13 @@
-package dto;
+package com.ideate.idea_api_server.dto;
 
-import entity.User;
+import com.ideate.idea_api_server.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import util.BaseTime;
+import com.ideate.idea_api_server.util.BaseTime;
 
 /**
  * <pre>
@@ -26,6 +26,8 @@ import util.BaseTime;
 @Builder
 @ToString
 public class UserDto extends BaseTime {
+
+    private Long id; // 고객번호
 
     @Size(min = 8, message = " 아이디는 최소 8자리 입니다.")
     private String userId; // 고객아이디

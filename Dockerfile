@@ -1,9 +1,7 @@
 FROM openjdk:17-oracle
-ARG port
-EXPOSE ${port}
-COPY ${JAR_FILE} app.jar
-ENV docker-app 'Hello, Docker App !'
-WORKDIR /usr/local
+EXPOSE 8080
+ARG JAR_FILE=./build/libs/*.jar
+COPY ./build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "docker-app-0.0.1-SNAPSHOT.jar"]
 
 

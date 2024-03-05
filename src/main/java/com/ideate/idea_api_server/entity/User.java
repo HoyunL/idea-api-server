@@ -1,12 +1,12 @@
-package entity;
+package com.ideate.idea_api_server.entity;
 
-import dto.UserDto;
+import com.ideate.idea_api_server.dto.UserDto;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Length;
-import util.BaseTime;
+import com.ideate.idea_api_server.util.BaseTime;
 
 /**
  * <pre>
@@ -22,7 +22,7 @@ import util.BaseTime;
 @Builder // dto를 파라메터로 받아온 필드값들을 entity에 넘겨주기 위해서 사용했습니다.
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @ToString
 @Getter
 @Entity
@@ -31,6 +31,8 @@ public class User extends BaseTime {
 
     @Id @Length(min = 8)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userNo; // 고객아이디 같은경우 변경이 될 수 있어서 고객번호를 추가
+
     private String userId; // 고객아이디
 
     @Length(min = 8)

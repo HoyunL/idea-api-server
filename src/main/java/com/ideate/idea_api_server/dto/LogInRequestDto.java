@@ -1,7 +1,7 @@
 package com.ideate.idea_api_server.dto;
 
 import com.ideate.idea_api_server.entity.User;
-import com.ideate.util.BaseTime;
+import com.ideate.idea_api_server.util.BaseTime;
 import lombok.*;
 import org.apache.coyote.http11.upgrade.UpgradeProcessorInternal;
 
@@ -24,20 +24,11 @@ import org.apache.coyote.http11.upgrade.UpgradeProcessorInternal;
 @ToString
 public class LogInRequestDto extends BaseTime {
 
-
     private Long userNo; // 고객번호
 
     private String userId; // 고객아이디
 
     private String passWord; // 고객 비밀번호
 
-
-    public User toLogInEntity(){
-        return User.builder()
-                .userNo(userNo)
-                .userId(userId)
-                .passWord(passWord)
-                .build();
-    }
-
+    private int logInCount; // 로그인 횟수
 }

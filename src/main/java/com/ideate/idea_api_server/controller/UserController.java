@@ -34,9 +34,8 @@ public class UserController {
 
     private final UserSerivce userSerivce;
 
-
     @GetMapping("/user")
-    public String getFindAllUser() {
+    public List<User> getFindAllUser() {
 
         log.info("getMapping test");
 
@@ -44,39 +43,46 @@ public class UserController {
 
         log.info(findAll.toString());
 
-        return "OK";
+        return findAll;
 
     }
 
-    @GetMapping("/user/{id}")
-    public String findByBoardId(@PathVariable(name = "id") Long id) {
+    @GetMapping("/user/{userId}")
+    public Optional<User> findByUserId(@PathVariable(name = "userId") String userId) {
 
-        Optional<User> userById = userSerivce.getUserById(id);
-        log.info("userById : " + userById.toString());
+//        if (id.equals("") || id == null) {
+//            return "게시물 번호가 존재하지 않습니다.(GET)";
+//        }
 
-        return "게시물 1건 조회 성공 (GET)";
+        Optional<User> userByUserId = userSerivce.getUserByUserId(userId);
+        log.info("userById : " + userByUserId.toString());
+
+        return userByUserId;
     }
 
+    @PostMapping("/user/{userId}")
+    public String postFindByUserId(@PathVariable(name = "userId") String userId) {
 
-    @PostMapping("/user/{id}")
-    public String postFindByBoardId(@PathVariable(name = "id") Long id) {
-
-        if (id.equals("") || id == null) {
-            return "게시물 번호가 존재하지 않습니다.(post)";
+        if (userId.equals("") || userId == null) {
+            return "고객정보 존재하지 않습니다.(POST)";
         }
 
-        userSerivce.getUserById(id);
-        return "게시물 1건 조회 성공 (POST)";
+        Optional<User> userByUserInfo = userSerivce.getUserByUserId(userId);
+
+        return "고객정보 1건 조회 성공 (POST)";
     }
 
-
     @PostMapping("/user")
-    public ResponseEntity<?> postBoard(@RequestBody @Valid UserDto userDto, BindingResult bindingResult) {
-
+    public ResponseEntity<?> InsertUserByDto(@RequestBody @Valid UserDto userDto, BindingResult bindingResult) {
         log.info("postMapping test");
         log.info(String.valueOf(userDto));
 
+        if (userDto.getNickName() == null || userDto.getNickName() == "") {
+            userDto.setNickName(userDto.getName()); // 요구사항 : 닉네임이 없을 경우, 이름을 디폴트 값으로 설정한다.
+        }
+
         if (bindingResult.hasErrors()) {
+            log.info("postMapping test@@@@");
             return new ResponseEntity<>("회원등록 오류", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -86,7 +92,6 @@ public class UserController {
             return new ResponseEntity<>("회원등록 오류2", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     @PutMapping("/user/update")
     public ResponseEntity<?> updateBoard(@RequestBody @Valid UserDto userDto, BindingResult bindingResult) {
@@ -106,9 +111,9 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/user/delete/{id}")
-    public String deleteBoard(@PathVariable(name = "id") Long id) {
-        userSerivce.delete(id);
+    @DeleteMapping("/user/delete/{userId}")
+    public String deleteUserByUserId(@PathVariable(name = "userId") String userId) {
+        userSerivce.deleteByUserID(userId);
         return "delete ok";
     }
 }

@@ -16,6 +16,7 @@ import com.ideate.idea_api_server.util.BaseTime;
  * @desc : 고객정보(필드값)를 전달하기 위해 생성.
  */
 @Getter
+@Setter // 별명 디폴트 값을 controller 에서 설정하기 위해 setter 추가
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -32,11 +33,13 @@ public class UserDto extends BaseTime {
 
     private String nickName; // 고객 별명
 
-    private int birth; // 고객 생년원일
+    private String birthDay; // 고객 생년원일
 
-    private Long phoneNumber; // 고객 전화번호
+    private String phoneNumber; // 고객 전화번호
 
     private String image; // 고객 이미지
+
+    private int logInCount; // 로그인 횟수
 
 
     /**
@@ -63,9 +66,10 @@ public class UserDto extends BaseTime {
                 .passWord(passWord)
                 .name(name)
                 .nickName(nickName)
-                .birth(birth)
+                .birthDay(birthDay)
                 .phoneNumber(phoneNumber)
                 .image(image)
+                .logInCount(logInCount)
                 .build();
     }
 }

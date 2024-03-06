@@ -1,4 +1,4 @@
-package com.ideate.util;
+package com.ideate.idea_api_server.handler;
 
 /**
  * <pre>

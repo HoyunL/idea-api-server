@@ -33,19 +33,22 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> userLogIn(@RequestBody @Valid LogInRequestDto logInRequestDto, BindingResult bindingResult) {
+    public ResponseEntity<LogInRequestDto> userLogIn(@RequestBody @Valid LogInRequestDto logInRequestDto, BindingResult bindingResult) {
 
         log.info("postMapping LogIn test");
         log.info(String.valueOf(logInRequestDto));
 
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>("로그인 오류", HttpStatus.UNAUTHORIZED); //요구사항 : 로그인 실패시 401 에러
-        }
 
-        if (logInService.LogInUser(logInRequestDto)) {
-            return new ResponseEntity<>("로그인 성공", HttpStatus.OK);
+        if (logInRequestDto.getUserId() != null || logInRequestDto.getPassWord() != null) {
+
+            log.info(String.valueOf(logInRequestDto));
+
+            logInService.LogInUser(logInRequestDto);
+            logInService.updateLogInCountByDto(logInRequestDto);
+
+            return new ResponseEntity(logInService.LogInUser(logInRequestDto), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("로그인 오류2", HttpStatus.UNAUTHORIZED); //요구사항 : 로그인 실패시 401 에러
+            return new ResponseEntity("로그인 오류2", HttpStatus.UNAUTHORIZED); //요구사항 : 로그인 실패시 401 에러
         }
     }
 }

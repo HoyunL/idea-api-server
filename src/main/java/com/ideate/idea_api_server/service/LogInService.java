@@ -6,6 +6,7 @@ import com.ideate.idea_api_server.entity.User;
 import com.ideate.idea_api_server.repository.LogInRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,12 +27,23 @@ import java.util.Optional;
 @Transactional
 @Service
 @AllArgsConstructor
+@Slf4j
 public class LogInService {
 
     private final LogInRepository logInRepository;
 
-    public boolean LogInUser(LogInRequestDto logInRequestDto) {
-        return logInRepository.existsById(logInRequestDto.getUserNo());
+    public Optional<User> LogInUser(LogInRequestDto logInRequestDto) {
+
+        log.info(String.valueOf(logInRequestDto));
+
+        return logInRepository.findUserByUserId(logInRequestDto.getUserId());
+    }
+
+    public int updateLogInCountByDto(LogInRequestDto logInRequestDto) {
+
+        log.info(String.valueOf(logInRequestDto));
+
+        return logInRepository.updateLogInCountByDto(logInRequestDto);
     }
 
 }

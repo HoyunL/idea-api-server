@@ -29,10 +29,10 @@ import java.time.LocalDateTime;
 public class BaseTime {
 
     @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd/HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdDate;
 
     @LastModifiedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd/HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime modifiedDate;
 }

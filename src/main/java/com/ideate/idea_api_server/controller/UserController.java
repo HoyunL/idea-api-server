@@ -88,9 +88,8 @@ public class UserController {
     }
 
 
-    @PutMapping("/user/update/{id}")
-    public ResponseEntity<?> updateBoard(@PathVariable(name = "id") Long id,
-                                         @RequestBody @Valid UserDto userDto, BindingResult bindingResult) {
+    @PutMapping("/user/update")
+    public ResponseEntity<?> updateBoard(@RequestBody @Valid UserDto userDto, BindingResult bindingResult) {
 
         if (userDto.getUserId() == null) {
             return new ResponseEntity<>("userId is null errors", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -109,7 +108,6 @@ public class UserController {
 
     @DeleteMapping("/user/delete/{id}")
     public String deleteBoard(@PathVariable(name = "id") Long id) {
-
         userSerivce.delete(id);
         return "delete ok";
     }

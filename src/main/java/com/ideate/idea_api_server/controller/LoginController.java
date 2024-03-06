@@ -1,7 +1,6 @@
 package com.ideate.idea_api_server.controller;
 
 import com.ideate.idea_api_server.dto.LogInRequestDto;
-import com.ideate.idea_api_server.dto.UserDto;
 import com.ideate.idea_api_server.service.LogInService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -40,13 +39,13 @@ public class LoginController {
         log.info(String.valueOf(logInRequestDto));
 
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>("로그인 오류", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("로그인 오류", HttpStatus.UNAUTHORIZED); //요구사항 : 로그인 실패시 401 에러
         }
 
         if (logInService.LogInUser(logInRequestDto)) {
             return new ResponseEntity<>("로그인 성공", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("로그인 오류2", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("로그인 오류2", HttpStatus.UNAUTHORIZED); //요구사항 : 로그인 실패시 401 에러
         }
     }
 }

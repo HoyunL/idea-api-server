@@ -77,13 +77,13 @@ public class UserController {
         log.info(String.valueOf(userDto));
 
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>("fail1", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("회원등록 오류", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         if (userSerivce.saveUser(userDto)) {
-            return new ResponseEntity<>("success", HttpStatus.CREATED);
+            return new ResponseEntity<>("회원등록 성공", HttpStatus.CREATED);
         } else {
-            return new ResponseEntity<>("fail2", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("회원등록 오류2", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

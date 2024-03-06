@@ -3,6 +3,8 @@ package com.ideate.idea_api_server.entity;
 import com.ideate.idea_api_server.dto.UserDto;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Length;
@@ -29,13 +31,14 @@ import com.ideate.idea_api_server.util.BaseTime;
 @Table(name = "user")
 public class User extends BaseTime {
 
-    @Id @Length(min = 8)
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo; // 고객아이디 같은경우 변경이 될 수 있어서 고객번호를 추가
 
+    @Size(min = 8, message = " 아이디는 최소 8자리 입니다.")
     private String userId; // 고객아이디
 
-    @Length(min = 8)
+    @Size(min = 8, message = " 비밀번호는 최소 8자리 입니다.")
     private String passWord; // 고객 비밀번호
 
     @Column(nullable = true)
@@ -49,15 +52,15 @@ public class User extends BaseTime {
     private int birth; // 고객 생년원일
 
     @Column(nullable = true)
-    @Length(min = 13)
-    private int phoneNumber; // 고객 전화번호
+    private Long phoneNumber; // 고객 전화번호
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String image; // 고객 이미지
 
 
     public UserDto toUserDto(){
         return UserDto.builder()
+                .userNo(userNo)
                 .userId(userId)
                 .passWord(passWord)
                 .name(name)

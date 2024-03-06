@@ -1,11 +1,6 @@
 package com.ideate.idea_api_server.dto;
 
 import com.ideate.idea_api_server.entity.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import com.ideate.idea_api_server.util.BaseTime;
 
@@ -27,12 +22,10 @@ import com.ideate.idea_api_server.util.BaseTime;
 @ToString
 public class UserDto extends BaseTime {
 
-    private Long id; // 고객번호
+    private Long userNo; // 고객번호
 
-    @Size(min = 8, message = " 아이디는 최소 8자리 입니다.")
     private String userId; // 고객아이디
 
-    @Size(min = 8, message = " 비밀번호는 최소 8자리 입니다.")
     private String passWord; // 고객 비밀번호
 
     private String name; // 고객 이름
@@ -41,7 +34,7 @@ public class UserDto extends BaseTime {
 
     private int birth; // 고객 생년원일
 
-    private int phoneNumber; // 고객 전화번호
+    private Long phoneNumber; // 고객 전화번호
 
     private String image; // 고객 이미지
 

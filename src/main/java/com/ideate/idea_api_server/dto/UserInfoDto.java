@@ -1,7 +1,9 @@
 package com.ideate.idea_api_server.dto;
 
+import com.ideate.idea_api_server.grade.UserLevel;
 import com.ideate.idea_api_server.util.BaseTime;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 /**
@@ -17,13 +19,17 @@ import lombok.*;
  * @desc :
  */
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @ToString
 public class UserInfoDto extends BaseTime {
 
-    private Long userNo; // 고객번호
+    @NotEmpty
+    private String userId; // 고객아이디
 
+    @NotEmpty
+    private UserLevel userLevel; // 고객등급
 
 }

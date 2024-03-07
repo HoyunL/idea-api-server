@@ -1,9 +1,8 @@
 package com.ideate.idea_api_server.dto;
 
-import com.ideate.idea_api_server.entity.User;
 import com.ideate.idea_api_server.util.BaseTime;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import org.apache.coyote.http11.upgrade.UpgradeProcessorInternal;
 
 /**
  * <pre>
@@ -17,18 +16,13 @@ import org.apache.coyote.http11.upgrade.UpgradeProcessorInternal;
  * @desc :
  */
 
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@ToString
-public class LogInRequestDto extends BaseTime {
 
-    private Long userNo; // 고객번호
+@Data
+public class LoginRequestDto {
 
+    @NotEmpty
     private String userId; // 고객아이디
 
+    @NotEmpty
     private String passWord; // 고객 비밀번호
-
-    private int logInCount; // 로그인 횟수
 }

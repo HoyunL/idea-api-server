@@ -25,12 +25,7 @@ import lombok.*;
 @Table(name = "userInfo")
 public class UserInfo extends BaseTime {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userInfo_No")
-    private Long UserInfoNo;
-
-    @OneToOne
-    @JoinColumn(name = "user_no")
-    private User user;
+    @Id
+    private String userId; // 고객아이디
 
 }

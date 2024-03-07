@@ -1,6 +1,7 @@
 package com.ideate.idea_api_server.controller;
 
-import com.ideate.idea_api_server.entity.UserInfo;
+import com.ideate.idea_api_server.entity.Users;
+import com.ideate.idea_api_server.grade.UserLevel;
 import com.ideate.idea_api_server.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,10 +29,13 @@ public class UserInfoController {
 
         private final UserInfoService userInfoService;
 
-        @GetMapping("/userInfo/{id}")
-        public Optional<UserInfo> selectUserInfoById(@PathVariable(name = "id") Long id){
+        @GetMapping("/userInfo/{userId}")
+        public Optional<Users> selectUserInfoById(@PathVariable(name = "userId") String userId){
 
-            Optional<UserInfo> selecteduserInfo = userInfoService.getUserInfoById(id);
+            log.info(userId);
+
+            Optional<Users> selecteduserInfo = userInfoService.getUserInfoById(userId);
+
             log.info(String.valueOf(selecteduserInfo));
             return selecteduserInfo;
         }

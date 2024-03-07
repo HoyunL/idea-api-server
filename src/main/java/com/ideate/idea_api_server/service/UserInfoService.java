@@ -1,6 +1,6 @@
 package com.ideate.idea_api_server.service;
 
-import com.ideate.idea_api_server.entity.UserInfo;
+import com.ideate.idea_api_server.entity.Users;
 import com.ideate.idea_api_server.repository.UserInfoRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -26,8 +26,9 @@ public class UserInfoService {
 
     private final UserInfoRepository userInfoRepository;
 
-    public Optional<UserInfo> getUserInfoById(Long id){
-        return userInfoRepository.findById(id);
+    public Optional<Users> getUserInfoById(String userId){
+
+        return userInfoRepository.selectedByUserInfo(userId);
     }
 
 

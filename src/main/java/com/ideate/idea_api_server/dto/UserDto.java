@@ -1,6 +1,6 @@
 package com.ideate.idea_api_server.dto;
 
-import com.ideate.idea_api_server.entity.User;
+import com.ideate.idea_api_server.entity.Users;
 import lombok.*;
 import com.ideate.idea_api_server.util.BaseTime;
 
@@ -60,8 +60,8 @@ public class UserDto extends BaseTime {
       * ----------------------------------------------------
      --------------
      */
-    public User toUserEntity(){
-        return User.builder()
+    public Users toUserEntity(){
+        return Users.builder()
                 .userId(userId)
                 .passWord(passWord)
                 .name(name)

@@ -1,16 +1,12 @@
 package com.ideate.idea_api_server.entity;
 
 import com.ideate.idea_api_server.dto.UserDto;
-import jakarta.annotation.Nullable;
+import com.ideate.idea_api_server.grade.UserLevel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.validator.constraints.Length;
 import com.ideate.idea_api_server.util.BaseTime;
 
 /**
@@ -31,12 +27,12 @@ import com.ideate.idea_api_server.util.BaseTime;
 @ToString
 @Getter
 @Entity
-@Table(name = "user")
-public class User extends BaseTime {
+@Table(name = "users")
+public class Users extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_no")
+    @Column(name = "users_no")
     private Long userNo; // 고객아이디 같은경우 변경이 될 수 있어서 고객번호를 추가
 
     @NotBlank
@@ -66,6 +62,10 @@ public class User extends BaseTime {
     @ColumnDefault("0")
     private int logInCount;
 
+    @Enumerated(value = EnumType.STRING)
+    @Column
+    private UserLevel userLevel;
+
     public UserDto toUserDto() {
         return UserDto.builder()
                 .userNo(userNo)
@@ -78,5 +78,4 @@ public class User extends BaseTime {
                 .image(image)
                 .build();
     }
-
 }

@@ -1,6 +1,6 @@
 package com.ideate.idea_api_server.service;
 
-import com.ideate.idea_api_server.entity.User;
+import com.ideate.idea_api_server.entity.Users;
 import com.ideate.idea_api_server.repository.UserRepository;
 import com.ideate.idea_api_server.dto.UserDto;
 import com.ideate.idea_api_server.util.Encryption;
@@ -33,12 +33,12 @@ public class UserSerivce {
 
     private final UserRepository userRepository;
 
-    public List<User> getFindAll() {
+    public List<Users> getFindAll() {
         return userRepository.findAll();
 
     }
 
-    public Optional<User> getUserByUserId(String userId) {
+    public Optional<Users> getUserByUserId(String userId) {
         return userRepository.findByUserId(userId);
 
     }
@@ -58,7 +58,7 @@ public class UserSerivce {
         log.info("userDto1 =" + userDto1);
 
 
-        User entity = userRepository.save(userDto1.toUserEntity());
+        Users entity = userRepository.save(userDto1.toUserEntity());
         return true;
     }
 

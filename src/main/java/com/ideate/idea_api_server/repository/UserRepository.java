@@ -1,7 +1,7 @@
 package com.ideate.idea_api_server.repository;
 
 import com.ideate.idea_api_server.dto.UserDto;
-import com.ideate.idea_api_server.entity.User;
+import com.ideate.idea_api_server.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,18 +24,18 @@ import java.util.Optional;
  */
 
 @Repository
-public interface UserRepository extends JpaRepository<User,String> {
+public interface UserRepository extends JpaRepository<Users,String> {
 
     void save(UserDto userDto);
 
-    List<User> findAll();
+    List<Users> findAll();
 
-    @Query("select u from User u where u.userId = :userId")
-    Optional<User> findByUserId(@Param("userId") String userId);
+    @Query("select u from Users u where u.userId = :userId")
+    Optional<Users> findByUserId(@Param("userId") String userId);
 
 
     @Modifying
-    @Query("delete from User u where u.userId = :userId")
+    @Query("delete from Users u where u.userId = :userId")
     void deleteById(@Param("userId") String userId);
 
 

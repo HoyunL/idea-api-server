@@ -1,9 +1,8 @@
 package com.ideate.idea_api_server.controller;
 
-import com.ideate.idea_api_server.entity.User;
+import com.ideate.idea_api_server.entity.Users;
 import com.ideate.idea_api_server.service.UserSerivce;
 import com.ideate.idea_api_server.dto.UserDto;
-import com.ideate.idea_api_server.entity.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,12 +33,12 @@ public class UserController {
 
     private final UserSerivce userSerivce;
 
-    @GetMapping("/user")
-    public List<User> getFindAllUser() {
+    @GetMapping("/users")
+    public List<Users> getFindAllUser() {
 
         log.info("getMapping test");
 
-        List<User> findAll = userSerivce.getFindAll();
+        List<Users> findAll = userSerivce.getFindAll();
 
         log.info(findAll.toString());
 
@@ -47,33 +46,34 @@ public class UserController {
 
     }
 
-    @GetMapping("/user/{userId}")
-    public Optional<User> findByUserId(@PathVariable(name = "userId") String userId) {
+    @GetMapping("/users/{userId}")
+    public Optional<Users> findByUserId(@PathVariable(name = "userId") String userId) {
 
 //        if (id.equals("") || id == null) {
 //            return "게시물 번호가 존재하지 않습니다.(GET)";
 //        }
 
-        Optional<User> userByUserId = userSerivce.getUserByUserId(userId);
+        Optional<Users> userByUserId = userSerivce.getUserByUserId(userId);
         log.info("userById : " + userByUserId.toString());
 
         return userByUserId;
     }
 
-    @PostMapping("/user/{userId}")
+    @PostMapping("/users/{userId}")
     public String postFindByUserId(@PathVariable(name = "userId") String userId) {
 
         if (userId.equals("") || userId == null) {
             return "고객정보 존재하지 않습니다.(POST)";
         }
 
-        Optional<User> userByUserInfo = userSerivce.getUserByUserId(userId);
+        Optional<Users> userByUserInfo = userSerivce.getUserByUserId(userId);
 
         return "고객정보 1건 조회 성공 (POST)";
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public ResponseEntity<?> InsertUserByDto(@RequestBody @Valid UserDto userDto, BindingResult bindingResult) {
+
         log.info("postMapping test");
         log.info(String.valueOf(userDto));
 
@@ -93,7 +93,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/user/update")
+    @PutMapping("/users/update")
     public ResponseEntity<?> updateBoard(@RequestBody @Valid UserDto userDto, BindingResult bindingResult) {
 
         if (userDto.getUserId() == null) {
@@ -111,7 +111,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/user/delete/{userId}")
+    @DeleteMapping("/users/delete/{userId}")
     public String deleteUserByUserId(@PathVariable(name = "userId") String userId) {
         userSerivce.deleteByUserID(userId);
         return "delete ok";

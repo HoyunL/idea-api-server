@@ -34,7 +34,7 @@ public class MaskingUtil {
             }
 
             if (phoneNumber.length() == 11) {
-                return phoneNumber.substring(0, 3) + "*" + phoneNumber.substring(4,5) + "***" + phoneNumber.substring(8, 11);
+                return phoneNumber.substring(0, 3) + "*" + phoneNumber.substring(4, 5) + "***" + phoneNumber.substring(8, 11);
             }
         } catch (Exception e) {
             log.error(e.toString());

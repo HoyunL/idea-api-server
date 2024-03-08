@@ -34,7 +34,7 @@ public class ImageDto {
     }
 
     @Builder
-    public ImageDto (String originImageName, String imageName,String imagePath) {
+    public ImageDto(String originImageName, String imageName, String imagePath) {
         this.originImageName = originImageName;
         this.imageName = imageName;
         this.imagePath = imagePath;

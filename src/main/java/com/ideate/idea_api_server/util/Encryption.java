@@ -20,7 +20,7 @@ public class Encryption {
     }
 
 
-/*    SHA-256 알고리즘이 MD5보다 강력하다고 합니다. 그래서 SHA-256 알고리즘으로 구현했습니다.  */
+    /*    SHA-256 알고리즘이 MD5보다 강력하다고 합니다. 그래서 SHA-256 알고리즘으로 구현했습니다.  */
 
 //    public static String encryptMD5(String s) {
 //        return encrypt(s, "MD5");

@@ -23,7 +23,7 @@ import java.time.temporal.ChronoField;
  * @author : lee ho yun
  * @version : x.x
  * @date : 2024-03-07 10:58
- * @desc :
+ * @desc : 구현중
  */
 
 @RestController
@@ -52,9 +52,9 @@ public class ImageController {
         String path = "images/test/" + year + "/" + month + "/" + day; // 저장될 폴더 경로
 
         try {
-            if(!image.isEmpty()) {
+            if (!image.isEmpty()) {
                 File file = new File(absolutePath + path);
-                if(!file.exists()){
+                if (!file.exists()) {
                     file.mkdirs(); // mkdir()과 다르게 상위 폴더가 없을 때 상위폴더까지 생성
                 }
 
@@ -74,7 +74,9 @@ public class ImageController {
         }
 
         return "ok";
-    };
+    }
+
+    ;
 
 
 }

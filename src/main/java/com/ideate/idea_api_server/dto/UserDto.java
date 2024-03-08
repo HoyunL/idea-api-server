@@ -52,32 +52,33 @@ public class UserDto extends BaseTime {
     private int logInCount; // 로그인 횟수
 
 
-     @QueryProjection
-     public UserDto(String userId, String name, String phoneNumber) {
-     this.userId = userId;
-     this.name = name;
-     this.phoneNumber = phoneNumber;
-     }
+    @QueryProjection
+    public UserDto(String userId, String name, String phoneNumber) {
+        this.userId = userId;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
 
-     /**
-      * <pre>
-      * 1. 개요 : 고객정보 service 레이어 단계에서 User 테이블에 고객정보를 넘겨주기 위해 사용한다.
+    /**
+     * <pre>
+     * 1. 개요 : 고객정보 service 레이어 단계에서 User 테이블에 고객정보를 넘겨주기 위해 사용한다.
      * 2. 처리내용 : controller에서 부터 받아온 고객정보를 user table에 넘겨주기 준다.
      * </pre>
+     *
      * @Method Name: toUserEntity
      * @date : 2024.03.05
      * @author : lee ho yun
      * @history :
      * ----------------------------------------------------
-     --------------
+     * --------------
      * 변경일 작성자 변경내역
      * ----------------------------------------------------
-     --------------
+     * --------------
      * 2024.03.05 lee ho yun 최초작성
-      * ----------------------------------------------------
-     --------------
+     * ----------------------------------------------------
+     * --------------
      */
-    public Users toUserEntity(){
+    public Users toUserEntity() {
         return Users.builder()
                 .userId(userId)
                 .passWord(passWord)

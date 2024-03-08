@@ -3,6 +3,7 @@ package com.ideate.idea_api_server.controller;
 import com.ideate.idea_api_server.entity.Users;
 import com.ideate.idea_api_server.service.UserSerivce;
 import com.ideate.idea_api_server.dto.UserDto;
+import com.querydsl.core.Tuple;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +47,19 @@ public class UserController {
 
     }
 
+//    @GetMapping("/users/where")
+//    public List<UserDto> getFindWhereUser() {
+//
+//        log.info("getMapping test");
+//
+//        List<UserDto> findAll = userSerivce.getFindWhere();
+//
+//        log.info(findAll.toString());
+//
+//        return findAll;
+//
+//    }
+
     @GetMapping("/users/{userId}")
     public Optional<Users> findByUserId(@PathVariable(name = "userId") String userId) {
 
@@ -81,7 +95,7 @@ public class UserController {
             userDto.setNickName(userDto.getName()); // 요구사항 : 닉네임이 없을 경우, 이름을 디폴트 값으로 설정한다.
         }
 
-        log.info(String.valueOf("bindingResult.hasErrors()"+bindingResult.hasErrors()));
+        log.info(String.valueOf("bindingResult.hasErrors()" + bindingResult.hasErrors()));
 
         if (bindingResult.hasErrors()) {
 

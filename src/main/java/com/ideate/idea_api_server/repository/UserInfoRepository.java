@@ -24,6 +24,6 @@ import java.util.Optional;
 @Repository
 public interface UserInfoRepository extends JpaRepository<Users, String> {
 
-    @Query("select u from Users u where u.userId = :userId")
+    @Query("select u.name from Users u where u.userId = :userId")
     Optional<Users> selectedByUserInfo(@Param("userId") String userId);
 }

@@ -24,9 +24,10 @@ import java.util.Optional;
  */
 
 @Repository
-public interface UserRepository extends JpaRepository<Users,String>{
+public interface UserRepository extends JpaRepository<Users, String> { // UserCustomRepository querydsl 개발중
 
     void save(UserDto userDto);
+
 
     List<Users> findAll();
 

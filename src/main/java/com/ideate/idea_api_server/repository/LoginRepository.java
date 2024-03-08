@@ -23,15 +23,14 @@ import java.util.Optional;
  */
 
 @Repository
-public interface LoginRepository extends JpaRepository<Users,Long> {
+public interface LoginRepository extends JpaRepository<Users, Long> {
 
     // 로그인 시 로그인 횟수 1씩 증가
-   @Modifying
-   @Query("update Users p set p.logInCount = p.logInCount + 1 where p.userId = :#{#dto.userId}")
-   int updateLogInCountByDto(@Param("dto") LoginRequestDto dto);
+    @Modifying
+    @Query("update Users p set p.logInCount = p.logInCount + 1 where p.userId = :#{#dto.userId}")
+    int updateLogInCountByDto(@Param("dto") LoginRequestDto dto);
 
 
-
-//   @Query("select u from User u where u.userId = :userId")
+    //   @Query("select u from User u where u.userId = :userId")
     Optional<Users> findUserByUserId(String userId);
 }

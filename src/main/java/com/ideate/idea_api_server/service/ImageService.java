@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  * @author : lee ho yun
  * @version : x.x
  * @date : 2024-03-07 10:15
- * @desc :
+ * @desc : 구현중
  */
 @Service
 @RequiredArgsConstructor

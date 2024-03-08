@@ -26,7 +26,7 @@ public class UserInfoService {
 
     private final UserInfoRepository userInfoRepository;
 
-    public Optional<Users> getUserInfoById(String userId){
+    public Optional<Users> getUserInfoById(String userId) {
 
         return userInfoRepository.selectedByUserInfo(userId);
     }

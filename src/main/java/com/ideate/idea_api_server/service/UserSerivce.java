@@ -1,10 +1,12 @@
 package com.ideate.idea_api_server.service;
 
 import com.ideate.idea_api_server.entity.Users;
+import com.ideate.idea_api_server.repository.UserCustomRepository;
 import com.ideate.idea_api_server.repository.UserRepository;
 import com.ideate.idea_api_server.dto.UserDto;
 import com.ideate.idea_api_server.util.Encryption;
 import com.ideate.idea_api_server.util.MaskingUtil;
+import com.querydsl.core.Tuple;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,11 +35,17 @@ import java.util.Optional;
 public class UserSerivce {
 
     private final UserRepository userRepository;
+    //private final UserCustomRepository userCustomRepository;
 
     public List<Users> getFindAll() {
         return userRepository.findAll();
-
     }
+
+
+//    public List<UserDto> getFindWhere(){
+//        return userCustomRepository.getUserInfor();
+//    }
+
 
     public Optional<Users> getUserByUserId(String userId) {
         return userRepository.findByUserId(userId);

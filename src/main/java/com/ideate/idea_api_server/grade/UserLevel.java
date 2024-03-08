@@ -17,7 +17,7 @@ import lombok.Getter;
 @Getter
 public enum UserLevel {
 
-    BASIC("일반"),VIP("우수"),HUMAN("휴먼"),BYE("탈퇴");
+    BASIC("일반"), VIP("우수"), HUMAN("휴먼"), BYE("탈퇴");
 
     private final String message;
 

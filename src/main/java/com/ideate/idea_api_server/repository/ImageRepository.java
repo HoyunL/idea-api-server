@@ -13,10 +13,10 @@ import org.springframework.stereotype.Repository;
  * @author : lee ho yun
  * @version : x.x
  * @date : 2024-03-07 10:13
- * @desc :
+ * @desc : 구현중
  */
 
 @Repository
-public interface ImageRepository extends JpaRepository<Image,Long> {
-
+public interface ImageRepository extends JpaRepository<Image, Long> {
+    // crud 기본 지원
 }

@@ -24,7 +24,7 @@ import java.util.Optional;
  */
 
 @Repository
-public interface UserRepository extends JpaRepository<Users,String> {
+public interface UserRepository extends JpaRepository<Users,String>{
 
     void save(UserDto userDto);
 
@@ -37,6 +37,5 @@ public interface UserRepository extends JpaRepository<Users,String> {
     @Modifying
     @Query("delete from Users u where u.userId = :userId")
     void deleteById(@Param("userId") String userId);
-
 
 }

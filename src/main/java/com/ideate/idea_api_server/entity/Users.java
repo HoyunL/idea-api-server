@@ -4,6 +4,7 @@ import com.ideate.idea_api_server.dto.UserDto;
 import com.ideate.idea_api_server.grade.UserLevel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -35,8 +36,6 @@ public class Users extends BaseTime {
     @Column(name = "users_no")
     private Long userNo; // 고객아이디 같은경우 변경이 될 수 있어서 고객번호를 추가
 
-    @NotBlank
-    @Size(min = 8, message = " 아이디는 최소 8자리 입니다.")
     @Column(updatable = false)
     private String userId; // 고객아이디
 
@@ -52,8 +51,7 @@ public class Users extends BaseTime {
     @Column(nullable = false, updatable = false)
     private String birthDay; // 고객 생년원일
 
-    @NotBlank
-    @Size(min = 13, message = " 전화번호는 최소 13자리 입니다.")
+    @Column
     private String phoneNumber; // 고객 전화번호1
 
     @Column(nullable = true, updatable = false)

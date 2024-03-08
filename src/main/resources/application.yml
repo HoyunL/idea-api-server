@@ -34,3 +34,5 @@ servlet:
     location: C:\IdeaTec\image
     maxFileSize: 200MB
     maxRequestSize: 100MB
+
+

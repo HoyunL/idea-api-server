@@ -81,8 +81,10 @@ public class UserController {
             userDto.setNickName(userDto.getName()); // 요구사항 : 닉네임이 없을 경우, 이름을 디폴트 값으로 설정한다.
         }
 
+        log.info(String.valueOf("bindingResult.hasErrors()"+bindingResult.hasErrors()));
+
         if (bindingResult.hasErrors()) {
-            log.info("postMapping test@@@@");
+
             return new ResponseEntity<>("회원등록 오류", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

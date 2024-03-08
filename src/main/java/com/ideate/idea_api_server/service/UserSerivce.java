@@ -4,6 +4,7 @@ import com.ideate.idea_api_server.entity.Users;
 import com.ideate.idea_api_server.repository.UserRepository;
 import com.ideate.idea_api_server.dto.UserDto;
 import com.ideate.idea_api_server.util.Encryption;
+import com.ideate.idea_api_server.util.MaskingUtil;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,11 +49,11 @@ public class UserSerivce {
         UserDto userDto1 = new UserDto();
 
         userDto1.setUserId(userDto.getUserId());
-        userDto1.setPassWord(Encryption.encryptSHA256(userDto.getPassWord())); // 요구사항 비밀번호는 암호화 한다.
+        userDto1.setPassWord(Encryption.encryptSHA256(userDto.getPassWord())); // 비밀번호는 암호화
         userDto1.setName(userDto.getName());
         userDto1.setNickName(userDto.getNickName());
         userDto1.setBirthDay(userDto.getBirthDay());
-        userDto1.setPhoneNumber(userDto.getPhoneNumber());
+        userDto1.setPhoneNumber(MaskingUtil.maskingPhoneNumber(userDto.getPhoneNumber())); // 전화번호 마스킹 처리
         userDto1.setImage(userDto.getImage());
 
         log.info("userDto1 =" + userDto1);
